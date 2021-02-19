@@ -1,0 +1,717 @@
+******************************************************************************
+             TMS320C2000 Linker PC v20.2.1                     
+******************************************************************************
+>> Linked Fri Feb 19 11:55:13 2021
+
+OUTPUT FILE NAME:   <Example_2833xCpuTimer.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00008b60
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+PAGE 0:
+  BEGIN                 00000000   00000002  00000002  00000000  RWIX
+  RAMM0                 00000050   000003b0  00000000  000003b0  RWIX
+  RAML0                 00008000   00001000  00000c8e  00000372  RWIX
+  RAML1                 00009000   00001000  00000000  00001000  RWIX
+  RAML2                 0000a000   00001000  00000000  00001000  RWIX
+  RAML3                 0000b000   00001000  00000000  00001000  RWIX
+  RAML4                 0000c000   00001000  00000400  00000c00  RWIX
+  FLASHH                00300002   00007ffe  00000000  00007ffe  RWIX
+  FLASHG                00308000   00008000  00000000  00008000  RWIX
+  FLASHF                00310000   00008000  00000000  00008000  RWIX
+  FLASHE                00318000   00008000  00000000  00008000  RWIX
+  FLASHD                00320000   00008000  00000000  00008000  RWIX
+  FLASHC                00328000   00008000  00000000  00008000  RWIX
+  FLASHB                00330000   00007ffe  00000000  00007ffe  RWIX
+  FLASHA                00338000   00007f80  00000000  00007f80  RWIX
+  CSM_RSVD              0033ff80   00000076  00000000  00000076  RWIX
+  CSM_PWL               0033fff8   00000008  00000000  00000008  RWIX
+  ADC_CAL               00380080   00000009  00000007  00000002  RWIX
+  OTP                   00380400   00000400  00000000  00000400  RWIX
+  IQTABLES              003fe000   00000b50  00000000  00000b50  RWIX
+  IQTABLES2             003feb50   0000008c  00000000  0000008c  RWIX
+  FPUTABLES             003febdc   000006a0  00000000  000006a0  RWIX
+  BOOTROM               003ff27c   00000d44  00000000  00000d44  RWIX
+  RESET                 003fffc0   00000002  00000000  00000002  RWIX
+  VECTORS               003fffc2   0000003e  00000000  0000003e  RWIX
+
+PAGE 1:
+  BOOT_RSVD             00000000   00000050  00000000  00000050  RWIX
+  RAMM1                 00000400   00000400  00000000  00000400  RWIX
+  RAML5                 0000d000   00001000  00000e40  000001c0  RWIX
+  RAML6                 0000e000   00001000  00000100  00000f00  RWIX
+  RAML7                 0000f000   00000ff0  0000029a  00000d56  RWIX
+  FLASH_FLAG            0000fff0   0000000f  00000000  0000000f  RWIX
+  ZONE6                 00100000   00080000  00000000  00080000  RWIX
+  ZONE7                 00200000   00100000  00000000  00100000  RWIX
+  FLASH_CRC             00300000   00000002  00000000  00000002  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+codestart 
+*          0    00000000    00000002     
+                  00000000    00000002     DSP2833x_CodeStartBranch.obj (codestart)
+
+.cinit     0    00008000    00000091     
+                  00008000    00000077     main.obj (.cinit)
+                  00008077    0000000e     rts2800_fpu32.lib : exit.c.obj (.cinit)
+                  00008085    00000005                       : _lock.c.obj (.cinit:__lock)
+                  0000808a    00000005                       : _lock.c.obj (.cinit:__unlock)
+                  0000808f    00000002     --HOLE-- [fill = 0]
+
+.pinit     0    00008000    00000000     UNINITIALIZED
+
+.stack     0    0000c000    00000400     UNINITIALIZED
+                  0000c000    00000400     --HOLE--
+
+.reset     0    003fffc0    00000002     DSECT
+                  003fffc0    00000002     rts2800_fpu32.lib : boot28.asm.obj (.reset)
+
+csm_rsvd   0    0033ff80    00000000     DSECT
+
+csmpasswds 
+*          0    0033fff8    00000000     DSECT
+
+.adc_cal   0    00380080    00000007     NOLOAD SECTION
+                  00380080    00000007     DSP2833x_ADC_cal.obj (.adc_cal)
+
+.text      0    00008091    00000bfd     
+                  00008091    00000316     DSP2833x_DefaultIsr.obj (.text:retain)
+                  000083a7    000002d0     main.obj (.text)
+                  00008677    0000017c     Solar_Lib_Float.lib : SPLL_1ph_F.obj (.text)
+                  000087f3    000000f8     DSP2833x_SysCtrl.obj (.text)
+                  000088eb    000000a3     main.obj (.text:retain)
+                  0000898e    00000088     rts2800_fpu32.lib : fs_div28.asm.obj (.text)
+                  00008a16    00000073     DSP2833x_CpuTimers.obj (.text)
+                  00008a89    00000073     Solar_Lib_Float.lib : NOTCH_FLTR_F.obj (.text)
+                  00008afc    00000064                         : CNTL_PI_F.obj (.text)
+                  00008b60    00000056     rts2800_fpu32.lib : boot28.asm.obj (.text)
+                  00008bb6    00000029                       : exit.c.obj (.text)
+                  00008bdf    00000028     DSP2833x_PieCtrl.obj (.text)
+                  00008c07    00000024     rts2800_fpu32.lib : cpy_tbl.c.obj (.text)
+                  00008c2b    00000020     DSP2833x_PieVect.obj (.text)
+                  00008c4b    0000001d     rts2800_fpu32.lib : memcpy.c.obj (.text)
+                  00008c68    00000012                       : args_main.c.obj (.text)
+                  00008c7a    00000009                       : _lock.c.obj (.text)
+                  00008c83    00000008     DSP2833x_CodeStartBranch.obj (.text)
+                  00008c8b    00000002     rts2800_fpu32.lib : pre_init.c.obj (.text)
+                  00008c8d    00000001                       : startup.c.obj (.text)
+
+.ebss.1    1    0000d000    000002bc     UNINITIALIZED
+                  0000d000    0000029a     main.obj (.ebss:_buffer_BH)
+                  0000d29a    00000018     DSP2833x_CpuTimers.obj (.ebss)
+                  0000d2b2    00000006     rts2800_fpu32.lib : exit.c.obj (.ebss)
+                  0000d2b8    00000002                       : _lock.c.obj (.ebss:__lock)
+                  0000d2ba    00000002                       : _lock.c.obj (.ebss:__unlock)
+
+.ebss.2    1    0000d2c0    0000029a     UNINITIALIZED
+                  0000d2c0    0000029a     main.obj (.ebss:_buffer_current_out_mean)
+
+.ebss.3    1    0000d580    0000029a     UNINITIALIZED
+                  0000d580    0000029a     main.obj (.ebss:_buffer_current_ref_ac)
+
+.ebss.4    1    0000d840    0000029a     UNINITIALIZED
+                  0000d840    0000029a     main.obj (.ebss:_buffer_pll)
+
+.ebss.5    1    0000db00    0000029a     UNINITIALIZED
+                  0000db00    0000029a     main.obj (.ebss:_buffer_voltage_in)
+
+.ebss.6    1    0000ddc0    000000f4     UNINITIALIZED
+                  0000ddc0    000000f4     main.obj (.ebss)
+
+.ebss.7    1    0000dec0    00000028     UNINITIALIZED
+                  0000dec0    00000028     main.obj (.ebss:_buffer_current_out)
+
+.econst    1    0000e000    00000100     
+                  0000e000    00000100     DSP2833x_PieVect.obj (.econst:_PieVectTableInit)
+
+.ebss.8    1    0000f000    0000029a     UNINITIALIZED
+                  0000f000    0000029a     main.obj (.ebss:_buffer_voltage_out)
+
+MODULE SUMMARY
+
+       Module                         code   initialized data   uninitialized data
+       ------                         ----   ----------------   ------------------
+    .\
+       main.obj                       883    119                4280              
+       DSP2833x_DefaultIsr.obj        790    0                  0                 
+       DSP2833x_PieVect.obj           32     256                0                 
+       DSP2833x_SysCtrl.obj           248    0                  0                 
+       DSP2833x_CpuTimers.obj         115    0                  24                
+       DSP2833x_PieCtrl.obj           40     0                  0                 
+       DSP2833x_CodeStartBranch.obj   10     0                  0                 
+       DSP2833x_ADC_cal.obj           7      0                  0                 
+    +--+------------------------------+------+------------------+--------------------+
+       Total:                         2125   375                4304              
+                                                                                  
+    C:/ti/controlSUITE/libs/app_libs/solar/v1.2/float/lib/Solar_Lib_Float.lib
+       SPLL_1ph_F.obj                 380    0                  0                 
+       NOTCH_FLTR_F.obj               115    0                  0                 
+       CNTL_PI_F.obj                  100    0                  0                 
+    +--+------------------------------+------+------------------+--------------------+
+       Total:                         595    0                  0                 
+                                                                                  
+    C:\ti\ccs1010\ccs\tools\compiler\ti-cgt-c2000_20.2.1.LTS\lib\rts2800_fpu32.lib
+       fs_div28.asm.obj               136    0                  0                 
+       boot28.asm.obj                 86     0                  0                 
+       exit.c.obj                     41     14                 6                 
+       cpy_tbl.c.obj                  36     0                  0                 
+       memcpy.c.obj                   29     0                  0                 
+       _lock.c.obj                    9      10                 4                 
+       args_main.c.obj                18     0                  0                 
+       pre_init.c.obj                 2      0                  0                 
+       startup.c.obj                  1      0                  0                 
+    +--+------------------------------+------+------------------+--------------------+
+       Total:                         358    24                 10                
+                                                                                  
+       Stack:                         0      0                  1024              
+    +--+------------------------------+------+------------------+--------------------+
+       Grand Total:                   3078   399                5338              
+
+
+GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
+
+address     data page           name
+--------    ----------------    ----
+0000c000     300 (0000c000)     __stack
+
+0000d000     340 (0000d000)     _buffer_BH
+
+0000d29a     34a (0000d280)     _CpuTimer0
+0000d2a2     34a (0000d280)     _CpuTimer1
+0000d2aa     34a (0000d280)     _CpuTimer2
+0000d2b2     34a (0000d280)     ___TI_enable_exit_profile_output
+0000d2b4     34a (0000d280)     ___TI_cleanup_ptr
+0000d2b6     34a (0000d280)     ___TI_dtors_ptr
+0000d2b8     34a (0000d280)     __lock
+0000d2ba     34a (0000d280)     __unlock
+
+0000d2c0     34b (0000d2c0)     _buffer_current_out_mean
+
+0000d580     356 (0000d580)     _buffer_current_ref_ac
+
+0000d840     361 (0000d840)     _buffer_pll
+
+0000db00     36c (0000db00)     _buffer_voltage_in
+
+0000ddc0     377 (0000ddc0)     _ISR_timer0_flag
+0000ddc1     377 (0000ddc0)     _ISR_timer1_flag
+0000ddc2     377 (0000ddc0)     _ISR_timer2_flag
+0000ddc3     377 (0000ddc0)     _conmutation
+0000ddc4     377 (0000ddc0)     _i
+0000ddc5     377 (0000ddc0)     _j
+0000ddc6     377 (0000ddc0)     _k
+0000ddc7     377 (0000ddc0)     _l
+0000ddc8     377 (0000ddc0)     _current_in
+0000ddca     377 (0000ddc0)     _current_ref_ac
+0000ddcc     377 (0000ddc0)     _S
+0000ddce     377 (0000ddc0)     _BH
+0000ddd0     377 (0000ddc0)     _ek
+0000ddd2     377 (0000ddc0)     _ek_1
+0000ddd4     377 (0000ddc0)     _ek_2
+0000ddd6     377 (0000ddc0)     _current_out
+0000ddd8     377 (0000ddc0)     _integral
+0000ddda     377 (0000ddc0)     _voltage_out
+0000dddc     377 (0000ddc0)     _voltage_out_ref
+0000ddde     377 (0000ddc0)     _voltage_out_normalized
+0000dde0     377 (0000ddc0)     _voltage_out_ref_normalized
+0000dde2     377 (0000ddc0)     _voltage_in
+0000dde4     377 (0000ddc0)     _voltage_in_normalized
+0000dde6     377 (0000ddc0)     _vin_max
+0000dde8     377 (0000ddc0)     _max
+0000ddea     377 (0000ddc0)     _spll_sine
+0000ddec     377 (0000ddc0)     _voltage_out_filtered
+0000ddee     377 (0000ddc0)     _L
+0000ddf0     377 (0000ddc0)     _fsw
+0000ddf2     377 (0000ddc0)     _m_i
+0000ddf4     377 (0000ddc0)     _b_i
+0000ddf6     377 (0000ddc0)     _m_vout
+0000ddf8     377 (0000ddc0)     _b_vout
+0000ddfa     377 (0000ddc0)     _m_iout
+0000ddfc     377 (0000ddc0)     _b_iout
+0000ddfe     377 (0000ddc0)     _suma
+
+0000de00     378 (0000de00)     _current_out_mean
+0000de02     378 (0000de00)     _current_in_amplitude
+0000de04     378 (0000de00)     _Gain_vout
+0000de06     378 (0000de00)     _current_in_amplitude_k_1
+0000de08     378 (0000de00)     _current_offset
+0000de0a     378 (0000de00)     _current_ref_offset
+0000de0c     378 (0000de00)     _normalization_vin
+0000de0e     378 (0000de00)     _iin_power_balance
+0000de10     378 (0000de00)     _efficiency
+0000de12     378 (0000de00)     _vin_offset
+0000de14     378 (0000de00)     _vin_gain
+0000de16     378 (0000de00)     _spll_notch_coef1
+0000de20     378 (0000de00)     _notch_TwiceGridFreq
+0000de2a     378 (0000de00)     _Bus_Volt_notch
+
+0000de40     379 (0000de40)     _Bus_Volt_notch2
+0000de4c     379 (0000de40)     _cntl_pi1
+
+0000de80     37a (0000de80)     _spll1
+
+0000dec0     37b (0000dec0)     _buffer_current_out
+
+0000e000     380 (0000e000)     _PieVectTableInit
+
+0000f000     3c0 (0000f000)     _buffer_voltage_out
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+page  address   name                            
+----  -------   ----                            
+abs   ffffffff  .text                           
+0     00008bb6  C$$EXIT                         
+0     0000898e  FS$$DIV                         
+0     00008177  _ADCINT_ISR                     
+0     00380080  _ADC_cal                        
+n/a   UNDEFED   _AdcMirror                      
+n/a   UNDEFED   _AdcRegs                        
+1     0000ddce  _BH                             
+1     0000de2a  _Bus_Volt_notch                 
+1     0000de40  _Bus_Volt_notch2                
+0     00008b21  _CNTL_PI_F_FUNC                 
+0     00008afc  _CNTL_PI_F_init                 
+0     00008a4f  _ConfigCpuTimer                 
+1     0000d29a  _CpuTimer0                      
+n/a   UNDEFED   _CpuTimer0Regs                  
+1     0000d2a2  _CpuTimer1                      
+n/a   UNDEFED   _CpuTimer1Regs                  
+1     0000d2aa  _CpuTimer2                      
+n/a   UNDEFED   _CpuTimer2Regs                  
+n/a   UNDEFED   _CsmPwl                         
+n/a   UNDEFED   _CsmRegs                        
+0     000088ba  _CsmUnlock                      
+0     000080a5  _DATALOG_ISR                    
+0     00008299  _DINTCH1_ISR                    
+0     000082a3  _DINTCH2_ISR                    
+0     000082ad  _DINTCH3_ISR                    
+0     000082b7  _DINTCH4_ISR                    
+0     000082c1  _DINTCH5_ISR                    
+0     000082cb  _DINTCH6_ISR                    
+n/a   UNDEFED   _DSP28x_usDelay                 
+0     00008806  _DisableDog                     
+0     00008325  _ECAN0INTA_ISR                  
+0     00008339  _ECAN0INTB_ISR                  
+0     0000832f  _ECAN1INTA_ISR                  
+0     00008343  _ECAN1INTB_ISR                  
+0     0000820d  _ECAP1_INT_ISR                  
+0     00008217  _ECAP2_INT_ISR                  
+0     00008221  _ECAP3_INT_ISR                  
+0     0000822b  _ECAP4_INT_ISR                  
+0     00008235  _ECAP5_INT_ISR                  
+0     0000823f  _ECAP6_INT_ISR                  
+0     000080b9  _EMUINT_ISR                     
+0     000081d1  _EPWM1_INT_ISR                  
+0     00008195  _EPWM1_TZINT_ISR                
+0     000081db  _EPWM2_INT_ISR                  
+0     0000819f  _EPWM2_TZINT_ISR                
+0     000081e5  _EPWM3_INT_ISR                  
+0     000081a9  _EPWM3_TZINT_ISR                
+0     000081ef  _EPWM4_INT_ISR                  
+0     000081b3  _EPWM4_TZINT_ISR                
+0     000081f9  _EPWM5_INT_ISR                  
+0     000081bd  _EPWM5_TZINT_ISR                
+0     00008203  _EPWM6_INT_ISR                  
+0     000081c7  _EPWM6_TZINT_ISR                
+0     00008249  _EQEP1_INT_ISR                  
+0     00008253  _EQEP2_INT_ISR                  
+0     00008bfe  _EnableInterrupts               
+1     0000de04  _Gain_vout                      
+n/a   UNDEFED   _GpioCtrlRegs                   
+n/a   UNDEFED   _GpioDataRegs                   
+0     00008611  _Gpio_select                    
+0     000082d5  _I2CINT1A_ISR                   
+0     000082df  _I2CINT2A_ISR                   
+0     000080cd  _ILLEGAL_ISR                    
+0     00008091  _INT13_ISR                      
+0     0000809b  _INT14_ISR                      
+1     0000ddc0  _ISR_timer0_flag                
+1     0000ddc1  _ISR_timer1_flag                
+1     0000ddc2  _ISR_timer2_flag                
+0     00008a16  _InitCpuTimers                  
+0     0000885f  _InitPeripheralClocks           
+0     00008bdf  _InitPieCtrl                    
+0     00008c2b  _InitPieVectTable               
+0     0000880e  _InitPll                        
+0     000087f3  _InitSysCtrl                    
+0     00008629  _Init_Adc                       
+1     0000ddee  _L                              
+0     00008389  _LUF_ISR                        
+0     0000837f  _LVF_ISR                        
+0     00008285  _MRINTA_ISR                     
+0     00008271  _MRINTB_ISR                     
+0     0000828f  _MXINTA_ISR                     
+0     0000827b  _MXINTB_ISR                     
+0     000080c3  _NMI_ISR                        
+0     00008aca  _NOTCH_FLTR_F_COEFF_Update      
+0     00008aba  _NOTCH_FLTR_F_VARS_init         
+0     00008a89  _NOTCH_FLTR_F_run               
+0     00008393  _PIE_RESERVED                   
+n/a   UNDEFED   _PieCtrlRegs                    
+n/a   UNDEFED   _PieVectTable                   
+1     0000e000  _PieVectTableInit               
+0     000080af  _RTOSINT_ISR                    
+1     0000ddcc  _S                              
+0     000082fd  _SCIRXINTA_ISR                  
+0     00008311  _SCIRXINTB_ISR                  
+0     000082e9  _SCIRXINTC_ISR                  
+0     00008307  _SCITXINTA_ISR                  
+0     0000831b  _SCITXINTB_ISR                  
+0     000082f3  _SCITXINTC_ISR                  
+0     0000814f  _SEQ1INT_ISR                    
+0     00008159  _SEQ2INT_ISR                    
+0     0000825d  _SPIRXINTA_ISR                  
+0     00008267  _SPITXINTA_ISR                  
+0     00008706  _SPLL_1ph_F_FUNC                
+0     000086aa  _SPLL_1ph_F_init                
+0     00008677  _SPLL_1ph_F_notch_coeff_update  
+0     000087fc  _ServiceDog                     
+n/a   UNDEFED   _SysCtrlRegs                    
+0     00008181  _TINT0_ISR                      
+0     00008131  _USER10_ISR                     
+0     0000813b  _USER11_ISR                     
+0     00008145  _USER12_ISR                     
+0     000080d7  _USER1_ISR                      
+0     000080e1  _USER2_ISR                      
+0     000080eb  _USER3_ISR                      
+0     000080f5  _USER4_ISR                      
+0     000080ff  _USER5_ISR                      
+0     00008109  _USER6_ISR                      
+0     00008113  _USER7_ISR                      
+0     0000811d  _USER8_ISR                      
+0     00008127  _USER9_ISR                      
+0     0000818b  _WAKEINT_ISR                    
+0     00008163  _XINT1_ISR                      
+0     0000816d  _XINT2_ISR                      
+0     0000834d  _XINT3_ISR                      
+0     00008357  _XINT4_ISR                      
+0     00008361  _XINT5_ISR                      
+0     0000836b  _XINT6_ISR                      
+0     00008375  _XINT7_ISR                      
+n/a   UNDEFED   _XintfRegs                      
+0     0000c400  __STACK_END                     
+abs   00000400  __STACK_SIZE                    
+1     0000d2b4  ___TI_cleanup_ptr               
+1     0000d2b6  ___TI_dtors_ptr                 
+1     0000d2b2  ___TI_enable_exit_profile_output
+abs   ffffffff  ___TI_pprof_out_hndl            
+abs   ffffffff  ___TI_prof_data_size            
+abs   ffffffff  ___TI_prof_data_start           
+abs   ffffffff  ___binit__                      
+abs   ffffffff  ___c_args__                     
+0     00008000  ___cinit__                      
+abs   ffffffff  ___etext__                      
+abs   ffffffff  ___pinit__                      
+abs   ffffffff  ___text__                       
+0     00008c68  __args_main                     
+1     0000d2b8  __lock                          
+0     00008c82  __nop                           
+0     00008c7e  __register_lock                 
+0     00008c7a  __register_unlock               
+0     0000c000  __stack                         
+0     00008c8d  __system_post_cinit             
+0     00008c8b  __system_pre_init               
+1     0000d2ba  __unlock                        
+0     00008bb6  _abort                          
+1     0000ddf4  _b_i                            
+1     0000ddfc  _b_iout                         
+1     0000ddf8  _b_vout                         
+1     0000d000  _buffer_BH                      
+1     0000dec0  _buffer_current_out             
+1     0000d2c0  _buffer_current_out_mean        
+1     0000d580  _buffer_current_ref_ac          
+1     0000d840  _buffer_pll                     
+1     0000db00  _buffer_voltage_in              
+1     0000f000  _buffer_voltage_out             
+0     00008b60  _c_int00                        
+1     0000de4c  _cntl_pi1                       
+1     0000ddc3  _conmutation                    
+0     00008c07  _copy_in                        
+0     000088eb  _cpu_timer0_isr                 
+0     00008964  _cpu_timer1_isr                 
+0     00008981  _cpu_timer2_isr                 
+1     0000ddc8  _current_in                     
+1     0000de02  _current_in_amplitude           
+1     0000de06  _current_in_amplitude_k_1       
+1     0000de08  _current_offset                 
+1     0000ddd6  _current_out                    
+1     0000de00  _current_out_mean               
+1     0000ddca  _current_ref_ac                 
+1     0000de0a  _current_ref_offset             
+1     0000de10  _efficiency                     
+1     0000ddd0  _ek                             
+1     0000ddd2  _ek_1                           
+1     0000ddd4  _ek_2                           
+0     00008bb8  _exit                           
+1     0000ddf0  _fsw                            
+1     0000ddc4  _i                              
+1     0000de0e  _iin_power_balance              
+1     0000ddd8  _integral                       
+1     0000ddc5  _j                              
+1     0000ddc6  _k                              
+1     0000ddc7  _l                              
+1     0000ddf2  _m_i                            
+1     0000ddfa  _m_iout                         
+1     0000ddf6  _m_vout                         
+0     000083a7  _main                           
+1     0000dde8  _max                            
+0     00008c4b  _memcpy                         
+1     0000de0c  _normalization_vin              
+1     0000de20  _notch_TwiceGridFreq            
+0     0000839d  _rsvd_ISR                       
+1     0000de80  _spll1                          
+1     0000de16  _spll_notch_coef1               
+1     0000ddea  _spll_sine                      
+1     0000ddfe  _suma                           
+1     0000de14  _vin_gain                       
+1     0000dde6  _vin_max                        
+1     0000de12  _vin_offset                     
+1     0000dde2  _voltage_in                     
+1     0000dde4  _voltage_in_normalized          
+1     0000ddda  _voltage_out                    
+1     0000ddec  _voltage_out_filtered           
+1     0000ddde  _voltage_out_normalized         
+1     0000dddc  _voltage_out_ref                
+1     0000dde0  _voltage_out_ref_normalized     
+abs   ffffffff  binit                           
+0     00008000  cinit                           
+0     00000000  code_start                      
+abs   ffffffff  etext                           
+abs   ffffffff  pinit                           
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+page  address   name                            
+----  -------   ----                            
+0     00000000  code_start                      
+0     00008000  ___cinit__                      
+0     00008000  cinit                           
+0     00008091  _INT13_ISR                      
+0     0000809b  _INT14_ISR                      
+0     000080a5  _DATALOG_ISR                    
+0     000080af  _RTOSINT_ISR                    
+0     000080b9  _EMUINT_ISR                     
+0     000080c3  _NMI_ISR                        
+0     000080cd  _ILLEGAL_ISR                    
+0     000080d7  _USER1_ISR                      
+0     000080e1  _USER2_ISR                      
+0     000080eb  _USER3_ISR                      
+0     000080f5  _USER4_ISR                      
+0     000080ff  _USER5_ISR                      
+0     00008109  _USER6_ISR                      
+0     00008113  _USER7_ISR                      
+0     0000811d  _USER8_ISR                      
+0     00008127  _USER9_ISR                      
+0     00008131  _USER10_ISR                     
+0     0000813b  _USER11_ISR                     
+0     00008145  _USER12_ISR                     
+0     0000814f  _SEQ1INT_ISR                    
+0     00008159  _SEQ2INT_ISR                    
+0     00008163  _XINT1_ISR                      
+0     0000816d  _XINT2_ISR                      
+0     00008177  _ADCINT_ISR                     
+0     00008181  _TINT0_ISR                      
+0     0000818b  _WAKEINT_ISR                    
+0     00008195  _EPWM1_TZINT_ISR                
+0     0000819f  _EPWM2_TZINT_ISR                
+0     000081a9  _EPWM3_TZINT_ISR                
+0     000081b3  _EPWM4_TZINT_ISR                
+0     000081bd  _EPWM5_TZINT_ISR                
+0     000081c7  _EPWM6_TZINT_ISR                
+0     000081d1  _EPWM1_INT_ISR                  
+0     000081db  _EPWM2_INT_ISR                  
+0     000081e5  _EPWM3_INT_ISR                  
+0     000081ef  _EPWM4_INT_ISR                  
+0     000081f9  _EPWM5_INT_ISR                  
+0     00008203  _EPWM6_INT_ISR                  
+0     0000820d  _ECAP1_INT_ISR                  
+0     00008217  _ECAP2_INT_ISR                  
+0     00008221  _ECAP3_INT_ISR                  
+0     0000822b  _ECAP4_INT_ISR                  
+0     00008235  _ECAP5_INT_ISR                  
+0     0000823f  _ECAP6_INT_ISR                  
+0     00008249  _EQEP1_INT_ISR                  
+0     00008253  _EQEP2_INT_ISR                  
+0     0000825d  _SPIRXINTA_ISR                  
+0     00008267  _SPITXINTA_ISR                  
+0     00008271  _MRINTB_ISR                     
+0     0000827b  _MXINTB_ISR                     
+0     00008285  _MRINTA_ISR                     
+0     0000828f  _MXINTA_ISR                     
+0     00008299  _DINTCH1_ISR                    
+0     000082a3  _DINTCH2_ISR                    
+0     000082ad  _DINTCH3_ISR                    
+0     000082b7  _DINTCH4_ISR                    
+0     000082c1  _DINTCH5_ISR                    
+0     000082cb  _DINTCH6_ISR                    
+0     000082d5  _I2CINT1A_ISR                   
+0     000082df  _I2CINT2A_ISR                   
+0     000082e9  _SCIRXINTC_ISR                  
+0     000082f3  _SCITXINTC_ISR                  
+0     000082fd  _SCIRXINTA_ISR                  
+0     00008307  _SCITXINTA_ISR                  
+0     00008311  _SCIRXINTB_ISR                  
+0     0000831b  _SCITXINTB_ISR                  
+0     00008325  _ECAN0INTA_ISR                  
+0     0000832f  _ECAN1INTA_ISR                  
+0     00008339  _ECAN0INTB_ISR                  
+0     00008343  _ECAN1INTB_ISR                  
+0     0000834d  _XINT3_ISR                      
+0     00008357  _XINT4_ISR                      
+0     00008361  _XINT5_ISR                      
+0     0000836b  _XINT6_ISR                      
+0     00008375  _XINT7_ISR                      
+0     0000837f  _LVF_ISR                        
+0     00008389  _LUF_ISR                        
+0     00008393  _PIE_RESERVED                   
+0     0000839d  _rsvd_ISR                       
+0     000083a7  _main                           
+0     00008611  _Gpio_select                    
+0     00008629  _Init_Adc                       
+0     00008677  _SPLL_1ph_F_notch_coeff_update  
+0     000086aa  _SPLL_1ph_F_init                
+0     00008706  _SPLL_1ph_F_FUNC                
+0     000087f3  _InitSysCtrl                    
+0     000087fc  _ServiceDog                     
+0     00008806  _DisableDog                     
+0     0000880e  _InitPll                        
+0     0000885f  _InitPeripheralClocks           
+0     000088ba  _CsmUnlock                      
+0     000088eb  _cpu_timer0_isr                 
+0     00008964  _cpu_timer1_isr                 
+0     00008981  _cpu_timer2_isr                 
+0     0000898e  FS$$DIV                         
+0     00008a16  _InitCpuTimers                  
+0     00008a4f  _ConfigCpuTimer                 
+0     00008a89  _NOTCH_FLTR_F_run               
+0     00008aba  _NOTCH_FLTR_F_VARS_init         
+0     00008aca  _NOTCH_FLTR_F_COEFF_Update      
+0     00008afc  _CNTL_PI_F_init                 
+0     00008b21  _CNTL_PI_F_FUNC                 
+0     00008b60  _c_int00                        
+0     00008bb6  C$$EXIT                         
+0     00008bb6  _abort                          
+0     00008bb8  _exit                           
+0     00008bdf  _InitPieCtrl                    
+0     00008bfe  _EnableInterrupts               
+0     00008c07  _copy_in                        
+0     00008c2b  _InitPieVectTable               
+0     00008c4b  _memcpy                         
+0     00008c68  __args_main                     
+0     00008c7a  __register_unlock               
+0     00008c7e  __register_lock                 
+0     00008c82  __nop                           
+0     00008c8b  __system_pre_init               
+0     00008c8d  __system_post_cinit             
+0     0000c000  __stack                         
+0     0000c400  __STACK_END                     
+0     00380080  _ADC_cal                        
+1     0000d000  _buffer_BH                      
+1     0000d29a  _CpuTimer0                      
+1     0000d2a2  _CpuTimer1                      
+1     0000d2aa  _CpuTimer2                      
+1     0000d2b2  ___TI_enable_exit_profile_output
+1     0000d2b4  ___TI_cleanup_ptr               
+1     0000d2b6  ___TI_dtors_ptr                 
+1     0000d2b8  __lock                          
+1     0000d2ba  __unlock                        
+1     0000d2c0  _buffer_current_out_mean        
+1     0000d580  _buffer_current_ref_ac          
+1     0000d840  _buffer_pll                     
+1     0000db00  _buffer_voltage_in              
+1     0000ddc0  _ISR_timer0_flag                
+1     0000ddc1  _ISR_timer1_flag                
+1     0000ddc2  _ISR_timer2_flag                
+1     0000ddc3  _conmutation                    
+1     0000ddc4  _i                              
+1     0000ddc5  _j                              
+1     0000ddc6  _k                              
+1     0000ddc7  _l                              
+1     0000ddc8  _current_in                     
+1     0000ddca  _current_ref_ac                 
+1     0000ddcc  _S                              
+1     0000ddce  _BH                             
+1     0000ddd0  _ek                             
+1     0000ddd2  _ek_1                           
+1     0000ddd4  _ek_2                           
+1     0000ddd6  _current_out                    
+1     0000ddd8  _integral                       
+1     0000ddda  _voltage_out                    
+1     0000dddc  _voltage_out_ref                
+1     0000ddde  _voltage_out_normalized         
+1     0000dde0  _voltage_out_ref_normalized     
+1     0000dde2  _voltage_in                     
+1     0000dde4  _voltage_in_normalized          
+1     0000dde6  _vin_max                        
+1     0000dde8  _max                            
+1     0000ddea  _spll_sine                      
+1     0000ddec  _voltage_out_filtered           
+1     0000ddee  _L                              
+1     0000ddf0  _fsw                            
+1     0000ddf2  _m_i                            
+1     0000ddf4  _b_i                            
+1     0000ddf6  _m_vout                         
+1     0000ddf8  _b_vout                         
+1     0000ddfa  _m_iout                         
+1     0000ddfc  _b_iout                         
+1     0000ddfe  _suma                           
+1     0000de00  _current_out_mean               
+1     0000de02  _current_in_amplitude           
+1     0000de04  _Gain_vout                      
+1     0000de06  _current_in_amplitude_k_1       
+1     0000de08  _current_offset                 
+1     0000de0a  _current_ref_offset             
+1     0000de0c  _normalization_vin              
+1     0000de0e  _iin_power_balance              
+1     0000de10  _efficiency                     
+1     0000de12  _vin_offset                     
+1     0000de14  _vin_gain                       
+1     0000de16  _spll_notch_coef1               
+1     0000de20  _notch_TwiceGridFreq            
+1     0000de2a  _Bus_Volt_notch                 
+1     0000de40  _Bus_Volt_notch2                
+1     0000de4c  _cntl_pi1                       
+1     0000de80  _spll1                          
+1     0000dec0  _buffer_current_out             
+1     0000e000  _PieVectTableInit               
+1     0000f000  _buffer_voltage_out             
+abs   00000400  __STACK_SIZE                    
+abs   ffffffff  .text                           
+abs   ffffffff  ___TI_pprof_out_hndl            
+abs   ffffffff  ___TI_prof_data_size            
+abs   ffffffff  ___TI_prof_data_start           
+abs   ffffffff  ___binit__                      
+abs   ffffffff  ___c_args__                     
+abs   ffffffff  ___etext__                      
+abs   ffffffff  ___pinit__                      
+abs   ffffffff  ___text__                       
+abs   ffffffff  binit                           
+abs   ffffffff  etext                           
+abs   ffffffff  pinit                           
+n/a   UNDEFED   _AdcMirror                      
+n/a   UNDEFED   _AdcRegs                        
+n/a   UNDEFED   _CpuTimer0Regs                  
+n/a   UNDEFED   _CpuTimer1Regs                  
+n/a   UNDEFED   _CpuTimer2Regs                  
+n/a   UNDEFED   _CsmPwl                         
+n/a   UNDEFED   _CsmRegs                        
+n/a   UNDEFED   _DSP28x_usDelay                 
+n/a   UNDEFED   _GpioCtrlRegs                   
+n/a   UNDEFED   _GpioDataRegs                   
+n/a   UNDEFED   _PieCtrlRegs                    
+n/a   UNDEFED   _PieVectTable                   
+n/a   UNDEFED   _SysCtrlRegs                    
+n/a   UNDEFED   _XintfRegs                      
+
+[219 symbols]
